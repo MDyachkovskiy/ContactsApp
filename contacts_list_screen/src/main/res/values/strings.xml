@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name_mock">Джон Траволта</string>
+    <string name="address_mock"> USA / Florida / Ocala / Anthony, Florida / NE 86th Lane</string>
+    <string name="phone_mock">+7 999 999–99–99</string>
+</resources>

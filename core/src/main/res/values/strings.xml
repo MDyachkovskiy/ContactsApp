@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //contacts_list_screen
+    <string name="contacts_list_title">Ваши контакты</string>
+    <string name="contact_address">Адрес</string>
+    <string name="contact_phone">Телефон</string>
+
+</resources>
