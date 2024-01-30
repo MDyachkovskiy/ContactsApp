@@ -6,4 +6,17 @@
     <string name="contact_address">Адрес</string>
     <string name="contact_phone">Телефон</string>
 
+    //contacts_details_screen
+    <string name="contacts_details_title">Информация о контакте</string>
+    <string name="contacts_title">Контакты</string>
+    <string name="phone_title">Рабочий телефон:</string>
+    <string name="email_title">Email:</string>
+    <string name="address_title">Адрес</string>
+    <string name="address_street_label">Улица:</string>
+    <string name="address_city_label">Город:</string>
+    <string name="address_state_label">Штат:</string>
+    <string name="address_country_label">Страна:</string>
+    <string name="dob_title">Дата рождения</string>
+
+
 </resources>

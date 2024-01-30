@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name_mock">Джон Траволта</string>
+    <string name="address_mock"> USA / Florida / Ocala / Anthony, Florida / NE 86th Lane</string>
+    <string name="phone_mock">+7 999 999–99–99</string>
+    <string name="email_mock">mail@email.ru</string>
+    <string name="street_mock">NE 86th Lane</string>
+    <string name="city_mock">Ocala</string>
+    <string name="state_mock">Florida</string>
+    <string name="country_mock">USA</string>
+    <string name="dob_mock">12.12.12</string>
+</resources>

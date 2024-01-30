@@ -18,14 +18,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/back_button"
-                android:layout_width="@dimen/toolbar_icon_size"
-                android:layout_height="@dimen/toolbar_icon_size"
-                android:layout_margin="@dimen/margin_16dp_medium"
-                android:src="@drawable/ic_arrow_back"
-                app:tint="@color/black" />
-
             <TextView
                 style="@style/title_1"
                 android:layout_width="match_parent"
@@ -39,12 +31,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_8dp_small"
         android:layout_marginHorizontal="@dimen/margin_16dp_medium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/app_bar_layout"
+        android:layout_marginTop="@dimen/margin_8dp_small"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/item_contact"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar_layout"
+        tools:listitem="@layout/item_contact" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
