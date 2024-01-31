@@ -18,5 +18,7 @@
     <string name="address_country_label">Страна:</string>
     <string name="dob_title">Дата рождения</string>
 
+    //error message
+    <string name="error_message">Произошла непредвиденная ошибка</string>
 
 </resources>
