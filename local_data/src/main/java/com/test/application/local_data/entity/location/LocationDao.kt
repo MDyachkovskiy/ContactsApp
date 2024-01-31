@@ -7,4 +7,7 @@ import androidx.room.Query
 interface LocationDao {
     @Query("SELECT * FROM locations WHERE locationId = :id")
     fun getLocationById(id: Long): LocationEntity?
+
+    @Query("DELETE FROM locations")
+    suspend fun clearLocations()
 }

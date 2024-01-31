@@ -18,4 +18,11 @@ class ContactsInteractorImpl(
                 }
             }
     }
+
+    override suspend fun refreshContacts(): Flow<List<ContactInfo>> {
+        localContactsRepository.clearContacts()
+        val newContacts = remoteContactsRepository.getAllContacts()
+        localContactsRepository.insertContacts(newContacts)
+        return localContactsRepository.getAllContacts()
+    }
 }

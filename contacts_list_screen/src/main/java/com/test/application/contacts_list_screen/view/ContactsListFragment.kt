@@ -2,6 +2,7 @@ package com.test.application.contacts_list_screen.view
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -11,6 +12,7 @@ import com.test.application.core.domain.ContactInfo
 import com.test.application.core.ui.BaseFragment
 import com.test.application.core.utils.AppState
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.test.application.contacts_list_screen.R
 import com.test.application.contacts_list_screen.adapter.ContactsListAdapter
 import com.test.application.core.navigation.Navigator
 import com.test.application.core.utils.KEY_CONTACT_ID
@@ -34,6 +36,24 @@ class ContactsListFragment : BaseFragment<AppState, List<ContactInfo>, FragmentC
         initViewModel()
         phoneDialer = PhoneDialer(requireContext())
         mapOpener = MapOpener()
+        handleRefreshButton()
+    }
+
+    private fun handleRefreshButton() {
+        binding.btnRefresh.setOnClickListener {
+            showRefreshConfirmationDialog()
+        }
+    }
+
+    private fun showRefreshConfirmationDialog() {
+        AlertDialog.Builder(requireContext())
+            .setTitle(getString(R.string.refresh_contacts_title))
+            .setMessage(getString(R.string.refresh_contacts_message))
+            .setPositiveButton(getString(R.string.refresh)) { _, _ ->
+                viewModel.refreshContacts()
+            }
+            .setNegativeButton(getString(R.string.cancel), null)
+            .show()
     }
 
     private fun initViewModel() {

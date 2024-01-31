@@ -7,4 +7,7 @@ import androidx.room.Query
 interface ContactAvatarDao {
     @Query("SELECT * FROM contact_avatars WHERE avatarId = :id")
     fun getAvatarById(id: Long): ContactAvatarEntity?
+
+    @Query("DELETE FROM contact_avatars")
+    suspend fun clearAvatars()
 }

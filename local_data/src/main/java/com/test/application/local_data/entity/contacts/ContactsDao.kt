@@ -2,6 +2,7 @@ package com.test.application.local_data.entity.contacts
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import com.test.application.core.domain.ContactInfo
@@ -12,17 +13,17 @@ import com.test.application.local_data.mapper.toEntity
 @Dao
 interface ContactsDao {
 
-    @Insert
-    fun insertLocation(location: LocationEntity): Long
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertLocation(location: LocationEntity): Long
 
-    @Insert
-    fun insertAvatar(avatar: ContactAvatarEntity): Long
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAvatar(avatar: ContactAvatarEntity): Long
 
-    @Insert
-    fun insertContact(contact: ContactsEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertContact(contact: ContactsEntity)
 
     @Transaction
-    fun insertContact(contactInfo: ContactInfo) {
+    suspend fun insertContact(contactInfo: ContactInfo) {
         val locationEntity = contactInfo.location.toEntity()
         val avatarEntity = contactInfo.picture.toEntity()
 
@@ -34,7 +35,7 @@ interface ContactsDao {
     }
 
     @Transaction
-    fun insertContacts(contacts: List<ContactInfo>) {
+    suspend fun insertContacts(contacts: List<ContactInfo>) {
         contacts.forEach { insertContact(it) }
     }
 
@@ -45,4 +46,7 @@ interface ContactsDao {
     @Transaction
     @Query("SELECT * FROM contact_info WHERE id = :contactId")
     fun getContactById(contactId: String): FullContactDetails?
+
+    @Query("DELETE FROM contact_info")
+    suspend fun clearContacts()
 }

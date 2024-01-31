@@ -35,4 +35,12 @@ class LocalContactsRepositoryImpl(
     override suspend fun insertContacts(contacts: List<ContactInfo>) {
         withContext(Dispatchers.IO) { contactsDao.insertContacts(contacts) }
     }
+
+    override suspend fun clearContacts() {
+        withContext(Dispatchers.IO) {
+            avatarDao.clearAvatars()
+            locationDao.clearLocations()
+            contactsDao.clearContacts()
+        }
+    }
 }

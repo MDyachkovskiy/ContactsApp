@@ -6,4 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface LocalContactsRepository {
     fun getAllContacts(): Flow<List<ContactInfo>>
     suspend fun insertContacts(contacts: List<ContactInfo>)
+
+    suspend fun clearContacts()
 }

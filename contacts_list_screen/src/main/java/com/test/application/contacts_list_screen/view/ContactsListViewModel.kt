@@ -34,4 +34,17 @@ class ContactsListViewModel(
             }
         }
     }
+
+    fun refreshContacts() {
+        viewModelCoroutineScope.launch {
+            _stateFlow.value = AppState.Loading
+            try {
+                contactsInteractor.refreshContacts().collect { newContacts ->
+                    _stateFlow.value = AppState.Success(newContacts)
+                }
+            } catch (e: Throwable) {
+                _stateFlow.value = AppState.Error(ErrorType.UnknownError(e))
+            }
+        }
+    }
 }
