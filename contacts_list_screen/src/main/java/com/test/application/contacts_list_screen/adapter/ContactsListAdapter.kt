@@ -46,7 +46,7 @@ class ContactsListAdapter : RecyclerView.Adapter<ContactsListAdapter.ViewHolder>
         fun bind(contact: ContactInfo){
             with(binding) {
                 tvName.text = contact.name
-                tvAddress.text = contact.location
+                tvAddress.text = contact.location.street
                 tvPhone.text = contact.cell
 
                 contactAvatar.load(contact.picture.thumbnail) {

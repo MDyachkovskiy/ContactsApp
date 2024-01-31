@@ -4,6 +4,7 @@ data class Result(
     val cell: String = "",
     val dob: Dob = Dob(),
     val email: String = "",
+    val phone: String = "",
     val id: Id = Id(),
     val location: Location = Location(),
     val name: Name = Name(),

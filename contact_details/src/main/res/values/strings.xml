@@ -9,4 +9,7 @@
     <string name="state_mock">Florida</string>
     <string name="country_mock">USA</string>
     <string name="dob_mock">12.12.12</string>
+
+    //Errors
+    <string name="incorrect_contact_id"> Ошибка в получении корректного id контакта</string>
 </resources>

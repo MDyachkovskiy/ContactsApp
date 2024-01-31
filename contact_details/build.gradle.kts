@@ -37,7 +37,11 @@ android {
 
 dependencies {
     implementation(project(":core"))
+
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("com.google.android.material:material:1.11.0")
+    implementation("io.coil-kt:coil:2.4.0")
+
 }
