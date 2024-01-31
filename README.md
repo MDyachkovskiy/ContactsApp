@@ -29,7 +29,8 @@ It's designed to provide a seamless and interactive way to explore user data, fe
 
 <h2>Application Demo Video:</h2>
 
-<p>Watch a demo of the application here: ![Contacts App Demo Video](https://gdurl.com/Hu15)
+<p>Watch a demo of the application here:</p>
+![Contacts App Demo Video](https://gdurl.com/Hu15)
 
 <h2>💻 Built with</h2>
 
