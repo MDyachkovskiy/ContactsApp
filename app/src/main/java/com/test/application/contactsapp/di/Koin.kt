@@ -4,11 +4,13 @@ import android.app.Application
 import androidx.room.Room
 import com.test.application.contact_details.ContactDetailViewModel
 import com.test.application.contacts_list_screen.view.ContactsListViewModel
+import com.test.application.core.repository.ContactDetailsRepository
 import com.test.application.core.repository.ContactsInteractor
 import com.test.application.core.repository.ContactsInteractorImpl
 import com.test.application.core.repository.LocalContactsRepository
 import com.test.application.core.repository.RemoteContactsRepository
 import com.test.application.local_data.database.ContactsDatabase
+import com.test.application.local_data.repository.ContactDetailsRepositoryImpl
 import com.test.application.local_data.repository.LocalContactsRepositoryImpl
 import com.test.application.remote_data.api.ContactsApi
 import com.test.application.remote_data.repository.ContactsRepositoryImpl
@@ -34,6 +36,7 @@ val repositoryModule = module {
     single<ContactsInteractor> { ContactsInteractorImpl(get(), get()) }
     single<LocalContactsRepository> { LocalContactsRepositoryImpl(get()) }
     single<RemoteContactsRepository> { ContactsRepositoryImpl(get()) }
+    single<ContactDetailsRepository> { ContactDetailsRepositoryImpl(get()) }
 }
 
 val databaseModule = module {
@@ -47,5 +50,5 @@ val databaseModule = module {
 
 val viewModelModule = module {
     viewModel { ContactsListViewModel(contactsInteractor = get()) }
-    viewModel { ContactDetailViewModel(contactsRepository = get()) }
+    viewModel { ContactDetailViewModel(contactDetailsRepository = get()) }
 }

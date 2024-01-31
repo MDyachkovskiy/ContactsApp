@@ -38,9 +38,9 @@ interface ContactsDao {
 
     @Transaction
     @Query("SELECT * FROM contact_info")
-    fun getAllContacts(): List<ContactInfo>
+    fun getAllContacts(): List<ContactsEntity>
 
     @Transaction
     @Query("SELECT * FROM contact_info WHERE id = :contactId")
-    fun getContactById(contactId: String): ContactInfo?
+    fun getContactById(contactId: String): FullContactDetails?
 }
