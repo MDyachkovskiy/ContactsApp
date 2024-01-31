@@ -2,6 +2,7 @@ package com.test.application.contacts_list_screen.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -13,6 +14,7 @@ class ContactsListAdapter : RecyclerView.Adapter<ContactsListAdapter.ViewHolder>
     private var contactsList: MutableList<ContactInfo> = mutableListOf()
 
     var listener: ((id: String) -> Unit)? = null
+    var onPhoneClickListener: ((phoneNumber: String) -> Unit)? = null
 
     fun updateContacts(newContacts: List<ContactInfo>) {
         val diffCallback = ContactsDiffUtils(contactsList, newContacts)
@@ -44,20 +46,40 @@ class ContactsListAdapter : RecyclerView.Adapter<ContactsListAdapter.ViewHolder>
         private val binding: ItemContactBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(contact: ContactInfo){
-            with(binding) {
-                tvName.text = contact.name
-                tvAddress.text = contact.location.street
-                tvPhone.text = contact.cell
+            setContactName(contact.name)
+            setContactAddress(contact.location.street)
+            setContactPhone(contact.cell)
+            setContactAvatar(contact.picture.large)
 
-                contactAvatar.load(contact.picture.large) {
-                    crossfade(true)
-                    placeholder(com.test.application.core.R.drawable.person_placeholder)
-                }
+            binding.root.setOnClickListener {
+                listener?.invoke(contact.id)
+            }
+        }
 
-                root.setOnClickListener {
-                    listener?.invoke(contact.id)
+        private fun setContactAvatar(imageUrl: String) {
+            binding.contactAvatar.load(imageUrl) {
+                crossfade(true)
+                placeholder(com.test.application.core.R.drawable.person_placeholder)
+            }
+        }
+
+        private fun setContactPhone(phone: String) {
+            binding.tvPhone.apply {
+                text = phone
+                paint.isUnderlineText = true
+                setTextColor(ContextCompat.getColor(context, android.R.color.holo_blue_light))
+                setOnClickListener {
+                    onPhoneClickListener?.invoke(phone)
                 }
             }
+        }
+
+        private fun setContactAddress(address: String) {
+            binding.tvAddress.text = address
+        }
+
+        private fun setContactName(name: String) {
+            binding.tvName.text = name
         }
     }
 }

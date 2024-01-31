@@ -23,4 +23,10 @@
     <string name="error_network">Ошибка сети</string>
     <string name="error_unknown">Неизвестная ошибка: %1$s</string>
 
+    //dial message
+    <string name="confirm_call">Осуществить вызов</string>
+    <string name="confirm_call_message">Вы хотите позвонить на номер %s?</string>
+    <string name="call">Позвонить</string>
+    <string name="cancel">Отмена</string>
+
 </resources>

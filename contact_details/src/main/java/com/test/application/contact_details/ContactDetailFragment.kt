@@ -3,7 +3,9 @@ package com.test.application.contact_details
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -14,6 +16,7 @@ import com.test.application.core.utils.AppState
 import com.test.application.core.utils.KEY_CONTACT_ID
 import coil.load
 import com.test.application.core.navigation.OnBackPressInDetails
+import com.test.application.core.utils.PhoneDialer
 import com.test.application.core.utils.formatDateString
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,7 +29,7 @@ class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContac
     private var backPressedCallback: OnBackPressedCallback? = null
 
     private val viewModel: ContactDetailViewModel by viewModel()
-
+    private lateinit var phoneDialer: PhoneDialer
 
     private val contactId: String by lazy {
         arguments?.getString(KEY_CONTACT_ID)
@@ -51,6 +54,7 @@ class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContac
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
         initBackButton()
+        phoneDialer = PhoneDialer(requireContext())
     }
 
     private fun initBackButton() {
@@ -95,11 +99,11 @@ class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContac
 
     private fun initTextData(contact: ContactInfo) {
         with(binding) {
-            tvCellPhone.text = contact.cell
             tvContactName.text = contact.name
+            setContactPhone(tvCellPhone, contact.cell)
 
             tvEmail.text = contact.email
-            tvPhone.text = contact.phone
+            setContactPhone(tvPhone, contact.phone)
 
             tvStreet.text = contact.location.street
             tvCity.text = contact.location.city
@@ -107,6 +111,17 @@ class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContac
             tvCountry.text = contact.location.country
 
             tvDob.text = formatDateString(contact.birthday)
+        }
+    }
+
+    private fun setContactPhone(textView: TextView, phone: String) {
+        textView.apply {
+            text = phone
+            paint.isUnderlineText = true
+            setTextColor(ContextCompat.getColor(context, android.R.color.holo_blue_light))
+            setOnClickListener {
+                phoneDialer.dialPhoneNumber(phone)
+            }
         }
     }
 }

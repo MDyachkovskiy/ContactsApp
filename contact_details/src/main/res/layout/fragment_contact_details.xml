@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="ContactDetailFragment"
     tools:ignore="ContentDescription">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -295,15 +296,14 @@
                 style="@style/title_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp_medium"
+                android:layout_marginTop="@dimen/margin_8dp_small"
+                android:layout_marginBottom="@dimen/margin_16dp_medium"
                 android:text="@string/dob_mock"
                 android:textColor="@color/black"
-                android:layout_marginTop="@dimen/margin_8dp_small"
-                android:layout_marginStart="@dimen/margin_16dp_medium"
-                android:layout_marginBottom="@dimen/margin_16dp_medium"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dob_title"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
+                app:layout_constraintTop_toBottomOf="@id/dob_title" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
