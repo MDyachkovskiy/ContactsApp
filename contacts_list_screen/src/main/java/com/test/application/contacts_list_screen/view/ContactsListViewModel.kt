@@ -4,12 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.test.application.core.repository.ContactsRepository
+import com.test.application.core.repository.ContactsInteractor
 import com.test.application.core.utils.AppState
+import com.test.application.core.utils.EmptyDataException
+import com.test.application.core.utils.ErrorType
 import kotlinx.coroutines.launch
+import java.io.IOException
 
 class ContactsListViewModel(
-    private val contactsRepository: ContactsRepository
+    private val contactsInteractor: ContactsInteractor
 ) : ViewModel() {
 
     private val contactsLiveData: MutableLiveData<AppState> = MutableLiveData()
@@ -19,10 +22,14 @@ class ContactsListViewModel(
         contactsLiveData.postValue(AppState.Loading)
         viewModelScope.launch {
             try {
-                val contacts = contactsRepository.getAllContacts()
+                val contacts = contactsInteractor.getAllContacts()
                 contactsLiveData.postValue(AppState.Success(contacts))
-            } catch( e: Exception) {
-                contactsLiveData.postValue(AppState.Error(e))
+            } catch (e: EmptyDataException) {
+                contactsLiveData.postValue(AppState.Error(ErrorType.EmptyData))
+            } catch (e: IOException) {
+                contactsLiveData.postValue(AppState.Error(ErrorType.NetworkError))
+            } catch (e: Throwable) {
+                contactsLiveData.postValue(AppState.Error(ErrorType.UnknownError(e)))
             }
         }
     }

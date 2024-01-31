@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -41,6 +42,7 @@ android {
 dependencies {
     implementation (project(":core"))
     implementation (project(":remote_data"))
+    implementation (project(":local_data"))
     implementation (project(":contacts_list_screen"))
     implementation (project(":contact_details"))
 
@@ -54,6 +56,11 @@ dependencies {
     implementation ("io.insert-koin:koin-core:3.5.0")
     implementation ("io.insert-koin:koin-androidx-navigation:3.5.0")
     implementation ("io.insert-koin:koin-androidx-compose:3.5.0")
+
+    //Room
+    implementation ("androidx.room:room-runtime:2.6.1")
+    implementation ("androidx.room:room-ktx:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
 
     //Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")

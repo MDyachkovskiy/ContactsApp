@@ -2,6 +2,6 @@ package com.test.application.core.repository
 
 import com.test.application.core.domain.ContactInfo
 
-interface ContactsRepository {
+interface RemoteContactsRepository {
     suspend fun getAllContacts() : List<ContactInfo>
 }

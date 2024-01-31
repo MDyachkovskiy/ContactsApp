@@ -14,6 +14,7 @@ import androidx.viewbinding.ViewBinding
 import com.test.application.core.R
 import com.test.application.core.databinding.LayoutLoadingBinding
 import com.test.application.core.utils.AppState
+import com.test.application.core.utils.ErrorType
 
 typealias Inflate<F> = (LayoutInflater, ViewGroup?, Boolean) -> F
 @Suppress("UNCHECKED_CAST")
@@ -75,7 +76,13 @@ abstract class BaseFragment<T : AppState, I, VB : ViewBinding>(
 
             is AppState.Error -> {
                 showWorkingView()
-                showErrorDialog(appState.error.message)
+                val messageResId = appState.error.messageResId
+                val message = when (appState.error) {
+                    is ErrorType.EmptyData -> getString(messageResId)
+                    is ErrorType.NetworkError -> getString(messageResId)
+                    is ErrorType.UnknownError -> getString(messageResId, appState.error.throwable.message)
+                }
+                showErrorDialog(message)
             }
         }
     }
@@ -91,8 +98,8 @@ abstract class BaseFragment<T : AppState, I, VB : ViewBinding>(
     }
 
     private fun showErrorDialog(message: String?) {
-        Toast.makeText(requireContext(),
-            message ?: getString(R.string.error_message), Toast.LENGTH_SHORT).show()
+        val errorMessage = message ?: getString(R.string.error_unknown, "")
+        Toast.makeText(requireContext(), errorMessage, Toast.LENGTH_SHORT).show()
     }
 
     private fun showWorkingView() {

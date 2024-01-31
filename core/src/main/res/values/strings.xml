@@ -19,6 +19,8 @@
     <string name="dob_title">Дата рождения</string>
 
     //error message
-    <string name="error_message">Произошла непредвиденная ошибка</string>
+    <string name="error_empty_data">Данные отсутствуют</string>
+    <string name="error_network">Ошибка сети</string>
+    <string name="error_unknown">Неизвестная ошибка: %1$s</string>
 
 </resources>

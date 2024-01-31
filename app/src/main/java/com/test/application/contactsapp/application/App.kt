@@ -1,6 +1,7 @@
 package com.test.application.contactsapp.application
 
 import android.app.Application
+import com.test.application.contactsapp.di.databaseModule
 import com.test.application.contactsapp.di.networkModule
 import com.test.application.contactsapp.di.repositoryModule
 import com.test.application.contactsapp.di.viewModelModule
@@ -13,7 +14,7 @@ class App: Application() {
         super.onCreate()
         startKoin {
             androidContext(this@App)
-            modules(listOf(networkModule, repositoryModule, viewModelModule))
+            modules(listOf(networkModule, databaseModule, repositoryModule, viewModelModule))
         }
     }
 }
