@@ -29,7 +29,7 @@ It's designed to provide a seamless and interactive way to explore user data, fe
 
 <h2>Application Demo Video:</h2>
 
-<img src="https://gdurl.com/tzy6" alt="project-screenshot" width="200" height="400/">
+<p>Watch a demo of the application here: <a href="https://gdurl.com/azxk" target="_blank">Contacts App Demo Video</a></p>
 
 <h2>💻 Built with</h2>
 
