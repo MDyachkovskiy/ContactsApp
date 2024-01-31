@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name_mock">Джон Траволта</string>
+    <string name="address_mock"> USA / Florida / Ocala / Anthony, Florida / NE 86th Lane</string>
+    <string name="phone_mock">+7 999 999–99–99</string>
+
+    //refresh_button
+    <string name="refresh_contacts_title">Обновление контактов</string>
+    <string name="refresh_contacts_message">Все старые контакты будут удалены. Вы уверены, что хотите продолжить?</string>
+    <string name="refresh">Обновить</string>
+    <string name="cancel">Отмена</string>
+</resources>

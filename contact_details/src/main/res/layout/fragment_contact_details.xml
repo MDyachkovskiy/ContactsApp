@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ContactDetailFragment"
+    tools:ignore="ContentDescription">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/back_button"
+                android:layout_width="@dimen/toolbar_icon_size"
+                android:layout_height="@dimen/toolbar_icon_size"
+                android:layout_gravity="start"
+                android:layout_margin="@dimen/margin_16dp_medium"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/black" />
+
+            <TextView
+                style="@style/title_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/contacts_details_title" />
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/person_photo_block"
+        android:layout_width="@dimen/persons_image_width"
+        android:layout_height="@dimen/persons_image_height"
+        android:layout_margin="@dimen/margin_16dp_medium"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar_layout">
+
+        <ImageView
+            android:id="@+id/person_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/person_placeholder" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_contact_name"
+        style="@style/title_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_16dp_medium"
+        android:layout_marginTop="@dimen/margin_48dp_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/person_photo_block"
+        app:layout_constraintTop_toTopOf="@id/person_photo_block"
+        tools:text="@string/name_mock" />
+
+    <TextView
+        android:id="@+id/tv_cell_phone"
+        style="@style/title_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_16dp_medium"
+        android:layout_marginTop="@dimen/margin_24dp_medium"
+        android:text="@string/phone_mock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/person_photo_block"
+        app:layout_constraintTop_toBottomOf="@id/tv_contact_name" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/user_contacts_block"
+        style="@style/ContactInfoBlock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_16dp_medium"
+        android:layout_marginTop="@dimen/margin_16dp_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/person_photo_block">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/contacts_title"
+                style="@style/title_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16dp_medium"
+                android:text="@string/contacts_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                style="@style/title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp_medium"
+                android:text="@string/phone_mock"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/contact_phone"
+                app:layout_constraintTop_toTopOf="@+id/contact_phone" />
+
+            <TextView
+                android:id="@+id/contact_phone"
+                style="@style/title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16dp_medium"
+                android:layout_marginTop="@dimen/margin_8dp_small"
+                android:text="@string/phone_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contacts_title" />
+
+            <TextView
+                android:id="@+id/contact_email"
+                style="@style/title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16dp_medium"
+                android:layout_marginTop="@dimen/margin_8dp_small"
+                android:text="@string/email_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contact_phone" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                style="@style/title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp_medium"
+                android:text="@string/email_mock"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/contact_email"
+                app:layout_constraintTop_toTopOf="@+id/contact_email" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/address_block"
+        style="@style/ContactInfoBlock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_16dp_medium"
+        android:layout_marginTop="@dimen/margin_8dp_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_contacts_block">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/address_title"
+                style="@style/title_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16dp_medium"
+                android:text="@string/address_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/street_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16dp_medium"
+                android:layout_marginTop="@dimen/margin_8dp_small"
+                android:text="@string/address_street_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/address_title" />
+
+            <TextView
+                android:id="@+id/tv_street"
+                style="@style/title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp_medium"
+                android:text="@string/street_mock"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@id/street_label"
+                app:layout_constraintTop_toTopOf="@id/street_label" />
+
+            <TextView
+                android:id="@+id/city_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16dp_medium"
+                android:layout_marginTop="@dimen/margin_8dp_small"
+                android:text="@string/address_city_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/street_label" />
+
+            <TextView
+                android:id="@+id/tv_city"
+                style="@style/title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp_medium"
+                android:text="@string/city_mock"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/city_label"
+                app:layout_constraintTop_toTopOf="@+id/city_label" />
+
+            <TextView
+                android:id="@+id/state_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16dp_medium"
+                android:layout_marginTop="@dimen/margin_8dp_small"
+                android:text="@string/address_state_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/city_label" />
+
+            <TextView
+                android:id="@+id/tv_state"
+                style="@style/title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp_medium"
+                android:text="@string/state_mock"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/state_label"
+                app:layout_constraintTop_toTopOf="@+id/state_label" />
+
+            <TextView
+                android:id="@+id/country_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16dp_medium"
+                android:layout_marginTop="@dimen/margin_8dp_small"
+                android:text="@string/address_country_label"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/state_label" />
+
+            <TextView
+                android:id="@+id/tv_country"
+                style="@style/title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp_medium"
+                android:text="@string/country_mock"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toEndOf="@+id/country_label"
+                app:layout_constraintTop_toTopOf="@+id/country_label" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/date_of_birth_block"
+        style="@style/ContactInfoBlock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_16dp_medium"
+        android:layout_marginTop="@dimen/margin_8dp_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/address_block">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/dob_title"
+                style="@style/title_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16dp_medium"
+                android:text="@string/dob_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_dob"
+                style="@style/title_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_16dp_medium"
+                android:layout_marginTop="@dimen/margin_8dp_small"
+                android:layout_marginBottom="@dimen/margin_16dp_medium"
+                android:text="@string/dob_mock"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dob_title" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

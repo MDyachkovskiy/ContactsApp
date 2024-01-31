@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //contacts_list_screen
+    <string name="contacts_list_title">Ваши контакты</string>
+    <string name="contact_address">Адрес</string>
+    <string name="contact_phone">Телефон</string>
+
+    //contacts_details_screen
+    <string name="contacts_details_title">Информация о контакте</string>
+    <string name="contacts_title">Контакты</string>
+    <string name="phone_title">Рабочий телефон:</string>
+    <string name="email_title">Email:</string>
+    <string name="address_title">Адрес</string>
+    <string name="address_street_label">Улица:</string>
+    <string name="address_city_label">Город:</string>
+    <string name="address_state_label">Штат:</string>
+    <string name="address_country_label">Страна:</string>
+    <string name="dob_title">Дата рождения</string>
+
+    //error message
+    <string name="error_empty_data">Данные отсутствуют</string>
+    <string name="error_network">Ошибка сети</string>
+    <string name="error_unknown">Неизвестная ошибка: %1$s</string>
+
+    //dial message
+    <string name="confirm_call">Осуществить вызов</string>
+    <string name="confirm_call_message">Вы хотите позвонить на номер %s?</string>
+    <string name="call">Позвонить</string>
+    <string name="cancel">Отмена</string>
+
+    //email message
+    <string name="no_email_app_title">Нет приложения для отправки писем</string>
+    <string name="no_email_app_message">Не установлено ни одно приложение для отправки писем. Пожалуйста, установите приложение для отправки писем и попробуйте снова</string>
+    <string name="ok">OK</string>
+
+    //map message
+    <string name="map_opener_dialog_title">Открыть карты</string>
+    <string name="map_opener_dialog_message">Вы хотите открыть карты для этой локации?</string>
+    <string name="map_opener_dialog_positive_button">Да</string>
+    <string name="map_opener_dialog_negative_button">Нет</string>
+    <string name="map_opener_no_map_app">Не найдено приложение для открытия карт</string>
+
+</resources>
