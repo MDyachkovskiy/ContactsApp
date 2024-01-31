@@ -29,4 +29,16 @@
     <string name="call">Позвонить</string>
     <string name="cancel">Отмена</string>
 
+    //email message
+    <string name="no_email_app_title">Нет приложения для отправки писем</string>
+    <string name="no_email_app_message">Не установлено ни одно приложение для отправки писем. Пожалуйста, установите приложение для отправки писем и попробуйте снова</string>
+    <string name="ok">OK</string>
+
+    //map message
+    <string name="map_opener_dialog_title">Открыть карты</string>
+    <string name="map_opener_dialog_message">Вы хотите открыть карты для этой локации?</string>
+    <string name="map_opener_dialog_positive_button">Да</string>
+    <string name="map_opener_dialog_negative_button">Нет</string>
+    <string name="map_opener_no_map_app">Не найдено приложение для открытия карт</string>
+
 </resources>

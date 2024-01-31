@@ -15,6 +15,7 @@ class ContactsListAdapter : RecyclerView.Adapter<ContactsListAdapter.ViewHolder>
 
     var listener: ((id: String) -> Unit)? = null
     var onPhoneClickListener: ((phoneNumber: String) -> Unit)? = null
+    var onAddressClickListener: ((latitude: Float, longitude: Float) -> Unit)? = null
 
     fun updateContacts(newContacts: List<ContactInfo>) {
         val diffCallback = ContactsDiffUtils(contactsList, newContacts)
@@ -54,6 +55,10 @@ class ContactsListAdapter : RecyclerView.Adapter<ContactsListAdapter.ViewHolder>
             binding.root.setOnClickListener {
                 listener?.invoke(contact.id)
             }
+
+            binding.tvAddress.setOnClickListener {
+                onAddressClickListener?.invoke(contact.location.latitude, contact.location.longitude)
+            }
         }
 
         private fun setContactAvatar(imageUrl: String) {
@@ -75,7 +80,10 @@ class ContactsListAdapter : RecyclerView.Adapter<ContactsListAdapter.ViewHolder>
         }
 
         private fun setContactAddress(address: String) {
-            binding.tvAddress.text = address
+            binding.tvAddress.apply {
+                text = address
+                paint.isUnderlineText = true
+            }
         }
 
         private fun setContactName(name: String) {

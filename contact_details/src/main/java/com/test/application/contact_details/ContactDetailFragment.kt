@@ -16,6 +16,8 @@ import com.test.application.core.utils.AppState
 import com.test.application.core.utils.KEY_CONTACT_ID
 import coil.load
 import com.test.application.core.navigation.OnBackPressInDetails
+import com.test.application.core.utils.EmailSender
+import com.test.application.core.utils.MapOpener
 import com.test.application.core.utils.PhoneDialer
 import com.test.application.core.utils.formatDateString
 import kotlinx.coroutines.launch
@@ -30,6 +32,8 @@ class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContac
 
     private val viewModel: ContactDetailViewModel by viewModel()
     private lateinit var phoneDialer: PhoneDialer
+    private lateinit var emailSender: EmailSender
+    private lateinit var mapOpener: MapOpener
 
     private val contactId: String by lazy {
         arguments?.getString(KEY_CONTACT_ID)
@@ -55,6 +59,8 @@ class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContac
         initViewModel()
         initBackButton()
         phoneDialer = PhoneDialer(requireContext())
+        emailSender = EmailSender(requireContext())
+        mapOpener = MapOpener()
     }
 
     private fun initBackButton() {
@@ -102,15 +108,26 @@ class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContac
             tvContactName.text = contact.name
             setContactPhone(tvCellPhone, contact.cell)
 
-            tvEmail.text = contact.email
+            setEmail(tvEmail, contact.email)
             setContactPhone(tvPhone, contact.phone)
 
-            tvStreet.text = contact.location.street
+            setAddress(tvStreet, contact)
             tvCity.text = contact.location.city
             tvState.text = contact.location.state
             tvCountry.text = contact.location.country
 
             tvDob.text = formatDateString(contact.birthday)
+        }
+    }
+
+    private fun setEmail(textView: TextView, email: String) {
+        textView.apply {
+            text = email
+            paint.isUnderlineText = true
+            setTextColor(ContextCompat.getColor(context, android.R.color.holo_blue_dark))
+            setOnClickListener {
+                emailSender.sendEmail(email)
+            }
         }
     }
 
@@ -121,6 +138,17 @@ class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContac
             setTextColor(ContextCompat.getColor(context, android.R.color.holo_blue_light))
             setOnClickListener {
                 phoneDialer.dialPhoneNumber(phone)
+            }
+        }
+    }
+
+    private fun setAddress(textView: TextView, contact: ContactInfo) {
+        textView.apply {
+            text = contact.location.street
+            paint.isUnderlineText = true
+            setOnClickListener {
+                mapOpener.openMap(requireContext(),
+                    contact.location.latitude, contact.location.longitude)
             }
         }
     }

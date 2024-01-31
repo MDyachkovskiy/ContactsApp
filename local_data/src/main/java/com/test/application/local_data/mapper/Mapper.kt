@@ -39,7 +39,9 @@ fun Location.toEntity(): LocationEntity {
         country = this.country,
         postcode = this.postcode,
         state = this.state,
-        street = this.street
+        street = this.street,
+        longitude = this.longitude,
+        latitude = this.latitude
     )
 }
 
@@ -49,7 +51,9 @@ fun LocationEntity.toDomain(): Location {
         country = this.country,
         postcode = this.postcode,
         state = this.state,
-        street = this.street
+        street = this.street,
+        longitude = this.longitude,
+        latitude = this.latitude
     )
 }
 

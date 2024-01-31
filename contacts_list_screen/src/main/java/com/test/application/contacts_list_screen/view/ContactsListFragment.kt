@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.test.application.contacts_list_screen.adapter.ContactsListAdapter
 import com.test.application.core.navigation.Navigator
 import com.test.application.core.utils.KEY_CONTACT_ID
+import com.test.application.core.utils.MapOpener
 import com.test.application.core.utils.PhoneDialer
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,11 +27,13 @@ class ContactsListFragment : BaseFragment<AppState, List<ContactInfo>, FragmentC
     private val viewModel: ContactsListViewModel by viewModel()
     private lateinit var phoneDialer: PhoneDialer
     private lateinit var contactsAdapter: ContactsListAdapter
+    private lateinit var mapOpener: MapOpener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
         phoneDialer = PhoneDialer(requireContext())
+        mapOpener = MapOpener()
     }
 
     private fun initViewModel() {
@@ -55,6 +58,13 @@ class ContactsListFragment : BaseFragment<AppState, List<ContactInfo>, FragmentC
         contactsAdapter.updateContacts(data)
         handleNavigationListener()
         handleDialListener()
+        handleAddressListener()
+    }
+
+    private fun handleAddressListener() {
+        contactsAdapter.onAddressClickListener = { latitude, longitude ->
+            mapOpener.openMap(requireContext(), latitude, longitude)
+        }
     }
 
     private fun handleDialListener() {

@@ -10,5 +10,7 @@ data class LocationEntity(
     val country: String,
     val postcode: String,
     val state: String,
-    val street: String
+    val street: String,
+    val longitude: Float = 0.0f,
+    val latitude: Float = 0.0f
 )

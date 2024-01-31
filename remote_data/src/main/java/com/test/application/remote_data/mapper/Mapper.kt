@@ -18,7 +18,9 @@ fun ResultDTO.toContactInfo(): ContactInfo {
             country = this.location.country,
             postcode = this.location.postcode,
             state = this.location.state,
-            street = "${this.location.street.number} ${this.location.street.name}".trim()
+            street = "${this.location.street.number} ${this.location.street.name}".trim(),
+            longitude = this.location.coordinates.longitude,
+            latitude = this.location.coordinates.latitude
         ),
         name = "${this.name.title} ${this.name.first} ${this.name.last}".trim(),
         picture = ContactAvatar(
