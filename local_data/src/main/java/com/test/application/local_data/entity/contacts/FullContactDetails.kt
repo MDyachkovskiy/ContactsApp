@@ -1,7 +1,9 @@
-package com.test.application.local_data.contacts
+package com.test.application.local_data.entity.contacts
 
 import androidx.room.Embedded
 import androidx.room.Relation
+import com.test.application.local_data.entity.avatar.ContactAvatarEntity
+import com.test.application.local_data.entity.location.LocationEntity
 
 data class FullContactDetails(
     @Embedded val contact: ContactsEntity,

@@ -44,4 +44,7 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("com.google.android.material:material:1.11.0")
     implementation("io.coil-kt:coil:2.4.0")
+
+    //Koin
+    implementation ("io.insert-koin:koin-android:3.5.0")
 }

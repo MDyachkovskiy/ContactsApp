@@ -3,9 +3,9 @@ package com.test.application.local_data.mapper
 import com.test.application.core.domain.ContactAvatar
 import com.test.application.core.domain.ContactInfo
 import com.test.application.core.domain.Location
-import com.test.application.local_data.contacts.ContactAvatarEntity
-import com.test.application.local_data.contacts.ContactsEntity
-import com.test.application.local_data.contacts.LocationEntity
+import com.test.application.local_data.entity.avatar.ContactAvatarEntity
+import com.test.application.local_data.entity.contacts.ContactsEntity
+import com.test.application.local_data.entity.location.LocationEntity
 
 fun ContactInfo.toEntity(locationId: Long, avatarId: Long): ContactsEntity {
     return ContactsEntity(
@@ -55,14 +55,12 @@ fun LocationEntity.toDomain(): Location {
 
 fun ContactAvatar.toEntity(): ContactAvatarEntity {
     return ContactAvatarEntity(
-        medium = this.medium,
-        thumbnail = this.thumbnail
+        medium = this.medium
     )
 }
 
 fun ContactAvatarEntity.toDomain(): ContactAvatar {
     return ContactAvatar(
-        medium = this.medium,
-        thumbnail = this.thumbnail
+        medium = this.medium
     )
 }

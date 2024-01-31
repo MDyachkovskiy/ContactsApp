@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), Navigator, OnBackPressInDetails {
     }
 
     override fun navigateFromContactsListToDetails(bundle: Bundle) {
-        navController.navigate(R.id.action_contactListFragment_to_DetailsFragment)
+        navController.navigate(R.id.action_contactListFragment_to_DetailsFragment, bundle)
     }
 
     override fun onBackButtonPressedInContactDetails() {

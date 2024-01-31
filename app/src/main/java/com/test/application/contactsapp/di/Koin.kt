@@ -34,7 +34,7 @@ val networkModule = module {
 
 val repositoryModule = module {
     single<ContactsInteractor> { ContactsInteractorImpl(get(), get()) }
-    single<LocalContactsRepository> { LocalContactsRepositoryImpl(get()) }
+    single<LocalContactsRepository> { LocalContactsRepositoryImpl(get(), get(), get()) }
     single<RemoteContactsRepository> { ContactsRepositoryImpl(get()) }
     single<ContactDetailsRepository> { ContactDetailsRepositoryImpl(get()) }
 }
@@ -45,6 +45,8 @@ val databaseModule = module {
             .build()
     }
     single { get<ContactsDatabase>().contactDao() }
+    single { get<ContactsDatabase>().locationDao() }
+    single { get<ContactsDatabase>().contactAvatarDao() }
 }
 
 

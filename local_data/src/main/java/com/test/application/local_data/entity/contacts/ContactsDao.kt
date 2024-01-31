@@ -1,10 +1,12 @@
-package com.test.application.local_data.contacts
+package com.test.application.local_data.entity.contacts
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import com.test.application.core.domain.ContactInfo
+import com.test.application.local_data.entity.avatar.ContactAvatarEntity
+import com.test.application.local_data.entity.location.LocationEntity
 import com.test.application.local_data.mapper.toEntity
 
 @Dao

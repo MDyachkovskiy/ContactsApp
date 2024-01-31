@@ -1,9 +1,11 @@
-package com.test.application.local_data.contacts
+package com.test.application.local_data.entity.contacts
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import com.test.application.local_data.entity.avatar.ContactAvatarEntity
+import com.test.application.local_data.entity.location.LocationEntity
 
 @Entity(
     tableName = "contact_info",

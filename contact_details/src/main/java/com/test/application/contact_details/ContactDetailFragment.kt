@@ -4,15 +4,18 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.test.application.contact_details.databinding.FragmentContactDetailsBinding
 import com.test.application.core.domain.ContactInfo
 import com.test.application.core.ui.BaseFragment
 import com.test.application.core.utils.AppState
 import com.test.application.core.utils.KEY_CONTACT_ID
-import androidx.fragment.app.viewModels
 import coil.load
 import com.test.application.core.navigation.OnBackPressInDetails
-
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContactDetailsBinding>(
     FragmentContactDetailsBinding::inflate
@@ -21,7 +24,7 @@ class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContac
     private var backButtonListener: OnBackPressInDetails? = null
     private var backPressedCallback: OnBackPressedCallback? = null
 
-    private val viewModel: ContactDetailViewModel by viewModels()
+    private val viewModel: ContactDetailViewModel by viewModel()
 
 
     private val contactId: String by lazy {
@@ -67,8 +70,12 @@ class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContac
     }
 
     private fun initViewModel() {
-        viewModel.getLiveData().observe(viewLifecycleOwner) {
-            renderData(it)
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.stateFlow.collect { appState ->
+                    renderData(appState)
+                }
+            }
         }
         viewModel.getContactDetails(contactId)
     }
