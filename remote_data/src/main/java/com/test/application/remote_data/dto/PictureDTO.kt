@@ -1,6 +1,6 @@
 package com.test.application.remote_data.dto
 
-data class Picture(
+data class PictureDTO(
     val medium: String = "",
     val thumbnail: String = ""
 )

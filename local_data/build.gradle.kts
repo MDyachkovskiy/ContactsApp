@@ -1,10 +1,11 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
-    namespace = "com.test.application.remote_data"
+    namespace = "com.test.application.local_data"
     compileSdk = 34
 
     defaultConfig {
@@ -35,10 +36,11 @@ android {
 dependencies {
     implementation(project(":core"))
 
+    //Room
+    implementation ("androidx.room:room-runtime:2.6.1")
+    implementation ("androidx.room:room-ktx:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-
-    //Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 }

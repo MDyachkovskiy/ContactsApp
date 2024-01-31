@@ -1,5 +1,5 @@
 package com.test.application.remote_data.dto
 
-data class Dob(
+data class DobDTO(
     val date: String = ""
 )

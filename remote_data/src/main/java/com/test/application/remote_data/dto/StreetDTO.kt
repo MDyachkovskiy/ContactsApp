@@ -1,6 +1,6 @@
 package com.test.application.remote_data.dto
 
-data class Street(
+data class StreetDTO(
     val name: String = "",
     val number: Int = 0
 )

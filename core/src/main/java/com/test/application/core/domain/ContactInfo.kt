@@ -1,7 +1,5 @@
 package com.test.application.core.domain
 
-
-
 data class ContactInfo(
     val cell: String = "",
     val phone: String = "",
