@@ -49,7 +49,7 @@ class ContactsListAdapter : RecyclerView.Adapter<ContactsListAdapter.ViewHolder>
                 tvAddress.text = contact.location.street
                 tvPhone.text = contact.cell
 
-                contactAvatar.load(contact.picture.medium) {
+                contactAvatar.load(contact.picture.large) {
                     crossfade(true)
                     placeholder(com.test.application.core.R.drawable.person_placeholder)
                 }

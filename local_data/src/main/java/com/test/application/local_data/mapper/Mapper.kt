@@ -55,12 +55,12 @@ fun LocationEntity.toDomain(): Location {
 
 fun ContactAvatar.toEntity(): ContactAvatarEntity {
     return ContactAvatarEntity(
-        medium = this.medium
+        large = this.large
     )
 }
 
 fun ContactAvatarEntity.toDomain(): ContactAvatar {
     return ContactAvatar(
-        medium = this.medium
+        large = this.large
     )
 }

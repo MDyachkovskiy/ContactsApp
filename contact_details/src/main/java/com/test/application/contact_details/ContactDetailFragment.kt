@@ -14,6 +14,7 @@ import com.test.application.core.utils.AppState
 import com.test.application.core.utils.KEY_CONTACT_ID
 import coil.load
 import com.test.application.core.navigation.OnBackPressInDetails
+import com.test.application.core.utils.formatDateString
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -86,7 +87,7 @@ class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContac
     }
 
     private fun initAvatar(data: ContactInfo) {
-        binding.personPhoto.load(data.picture.medium){
+        binding.personPhoto.load(data.picture.large){
             crossfade(true)
             placeholder(com.test.application.core.R.drawable.person_placeholder)
         }
@@ -105,7 +106,7 @@ class ContactDetailFragment : BaseFragment<AppState, ContactInfo, FragmentContac
             tvState.text = contact.location.state
             tvCountry.text = contact.location.country
 
-            tvDob.text = contact.birthday
+            tvDob.text = formatDateString(contact.birthday)
         }
     }
 }

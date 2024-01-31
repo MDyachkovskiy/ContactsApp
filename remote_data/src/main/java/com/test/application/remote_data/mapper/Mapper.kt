@@ -22,7 +22,7 @@ fun ResultDTO.toContactInfo(): ContactInfo {
         ),
         name = "${this.name.title} ${this.name.first} ${this.name.last}".trim(),
         picture = ContactAvatar(
-            medium = this.picture.medium,
+            large = this.picture.large,
         )
     )
 }
